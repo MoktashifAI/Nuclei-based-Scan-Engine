@@ -1,0 +1,29 @@
+id: juiceshop-admin-priv-escalation
+
+info:
+  name: OWASP Juice Shop Admin Privilege Escalation
+  author: Youssef Ashraf
+  severity: high
+  description: |
+    Checks for admin role assignment vulnerability in OWASP Juice Shop by verifying if a user has been escalated to admin privileges.
+
+variables:
+  userid: "1"  # Default user ID, replace with the appropriate ID to test.
+  token: "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJzdGF0dXMiOiJzdWNjZXNzIiwiZGF0YSI6eyJpZCI6MjIsInVzZXJuYW1lIjoiIiwiZW1haWwiOiJiYkBnbWFpbC5jb20iLCJwYXNzd29yZCI6IjgyN2NjYjBlZWE4YTcwNmM0YzM0YTE2ODkxZjg0ZTdiIiwicm9sZSI6ImN1c3RvbWVyIiwiZGVsdXhlVG9rZW4iOiIiLCJsYXN0TG9naW5JcCI6IjAuMC4wLjAiLCJwcm9maWxlSW1hZ2UiOiIvYXNzZXRzL3B1YmxpYy9pbWFnZXMvdXBsb2Fkcy9kZWZhdWx0LnN2ZyIsInRvdHBTZWNyZXQiOiIiLCJpc0FjdGl2ZSI6dHJ1ZSwiY3JlYXRlZEF0IjoiMjAyNS0wNC0wNyAxODo1ODoxMy4yMzcgKzAwOjAwIiwidXBkYXRlZEF0IjoiMjAyNS0wNC0wNyAxODo1ODoxMy4yMzcgKzAwOjAwIiwiZGVsZXRlZEF0IjpudWxsfSwiaWF0IjoxNzQ0MDUyMzA1fQ.JxLo4x6VxDxK8Woaj0WZU_F0mtJ8Lo4SnDc_GDKjRdPmq4x4w76F0QZPMqdqUrBHIbDS9RbIMNWd_iMh3PCbe-HtlzSXqUcOQqi8iL9VBK1Sw9lheZYnLi7qxtDRx829M9bOkM2tcrrTsPXoa5JfKvXKox6uk0YlSghL1Ogby-4"  # Example JWT, replace with actual token.
+
+http:
+  - raw:
+      - |
+        GET /api/Users/{{userid}} HTTP/1.1
+        Host: {{Hostname}}
+        Authorization: Bearer {{token}}
+        Content-Type: application/json
+
+    matchers-condition: and
+    matchers:
+      - type: word
+        words:
+          - '"role":"admin"'
+        part: body
+
+    stop-at-first-match: true

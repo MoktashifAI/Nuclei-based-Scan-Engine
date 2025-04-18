@@ -1,0 +1,23 @@
+id: juice-shop-sensitive-legal-file
+
+info:
+  name: Juice Shop Sensitive Legal File Disclosure
+  author: usamaahmed
+  severity: medium
+  description: |
+    This template checks for the presence of a sensitive legal file `legal.md` in the OWASP Juice Shop application. The file contains legal information that may be exposed publicly.
+  tags: juice-shop,sensitive-data,information-disclosure
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}/ftp/legal.md"
+    matchers-condition: and
+    matchers:
+      - type: word
+        words:
+          - "Legal Information"
+        part: body
+      - type: status
+        status:
+          - 200

