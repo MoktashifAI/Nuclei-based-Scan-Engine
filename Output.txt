@@ -1,0 +1,4 @@
+[juiceshop-admin-priv-escalation] [http] [high] http://localhost:3000/api/Users/1
+[juiceshop-ftp-exposure] [http] [medium] http://localhost:3000/ftp
+[juice-shop-sensitive-legal-file] [http] [medium] http://localhost:3000/ftp/legal.md
+[juice-shop-sqli-login-bypass] [http] [high] http://localhost:3000/#/login
