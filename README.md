@@ -1,4 +1,4 @@
-# Nuclei Scan Engine
+# Nuclei-based Scan Engine
 
 ## Table of Contents
 
