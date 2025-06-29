@@ -1,5 +1,35 @@
 # Nuclei Scan Engine
 
+## Table of Contents
+
+- [Overview](#overview)
+- [Features](#features)
+- [Supported Vulnerability Checks](#supported-vulnerability-checks)
+- [Quick Start](#quick-start)
+  - [Prerequisites](#prerequisites)
+  - [Deployment](#deployment)
+- [API Usage](#api-usage)
+  - [Vulnerability Scan](#vulnerability-scan)
+  - [Health Check](#health-check)
+- [Custom Templates](#custom-templates)
+- [Architecture](#architecture)
+- [Configuration](#configuration)
+  - [Environment Variables](#environment-variables)
+  - [Template Customization](#template-customization)
+- [Error Handling](#error-handling)
+- [Security Considerations](#security-considerations)
+- [Development](#development)
+  - [Local Development](#local-development)
+  - [Adding New Templates](#adding-new-templates)
+- [Troubleshooting](#troubleshooting)
+  - [Common Issues](#common-issues)
+- [Contributing](#contributing)
+- [License](#license)
+- [Author](#author)
+- [Disclaimer](#disclaimer)
+
+## Overview
+
 A containerized vulnerability scanning service powered by Nuclei, specifically designed for testing OWASP Juice Shop applications. This service provides a REST API interface for running automated security scans using custom Nuclei templates.
 
 ## Features
@@ -182,9 +212,9 @@ python ScanEngine_Nuclei_API.py
 - Check logs: `docker-compose logs nuclei-scan`
 
 **Scans return no results**:
-- Verify the target URL is accessible
+- Verify target URL is accessible
 - Check if templates are properly configured
-- Ensure the Nuclei binary is installed correctly
+- Ensure Nuclei binary is installed correctly
 
 **Permission errors**:
 - Verify Docker permissions
@@ -203,7 +233,7 @@ This project is provided as-is for educational and testing purposes.
 
 ## Author
 
-**Mohamed Khattab** - motahakhatttab98@gmail.com
+**Mohamed Taha Khattab** - mohamed.taha.khattab0@gmail.com
 
 ## Disclaimer
 
